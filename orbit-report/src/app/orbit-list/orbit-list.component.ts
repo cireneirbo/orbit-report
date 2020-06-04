@@ -15,4 +15,24 @@ export class OrbitListComponent implements OnInit {
   ngOnInit() {
   }
 
+  shouldShowWarning(type) :boolean {
+    if (type === "Space Debris") {
+        return true;
+    } else {
+        return false;
+    }
+  }
+
+  sort(column: string): void {
+    
+    this.satellites.sort(function(a: Satellite, b: Satellite): number {
+       if(a[column] < b[column]) {
+          return -1;
+       } else if (a[column] > b[column]) {
+          return 1;
+       }
+       return 0;
+    });
+  }
+
 }
